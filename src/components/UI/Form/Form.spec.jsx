@@ -3,9 +3,15 @@ import {render} from '@testing-library/react';
 import Form from './Form';
 
 describe('Form', () => {
-  it('renders', () => {
-    const {container} = render(<Form />);
+  it('renders with children', () => {
+    const {container} = render(
+      <Form handleSubmit={() => {}}>
+        <input type="text" />
+        <input type="password" />
+        <input type="email" />
+      </Form>,
+    );
 
-    expect(container.firstChild).toBeTruthy();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renders with children 1`] = `
+<form
+  class="sc-bdfBwQ"
+>
+  <input
+    type="text"
+  />
+  <input
+    type="password"
+  />
+  <input
+    type="email"
+  />
+</form>
+`;
