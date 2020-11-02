@@ -37,7 +37,10 @@ const signUpReducer = (state = INITIAL_STATE, action) => {
         ...state,
         [action.payload.name]: {
           value: action.payload.value,
-          isValid: action.payload.isValid,
+          isValid:
+            typeof action.payload.isValid === 'undefined'
+              ? true
+              : action.payload.isValid,
         },
       };
 
@@ -64,7 +67,10 @@ const signUpReducer = (state = INITIAL_STATE, action) => {
         ...state,
         [action.payload.name]: {
           value: state[action.payload.name]?.value,
-          isValid: action.payload.isValid,
+          isValid:
+            typeof action.payload.isValid === 'undefined'
+              ? true
+              : action.payload.isValid,
         },
       };
 

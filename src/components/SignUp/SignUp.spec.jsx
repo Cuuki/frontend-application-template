@@ -8,7 +8,7 @@ describe('SignUp', () => {
       <SignUp
         fieldValues={{}}
         addField={() => {}}
-        removeField={() => {}}
+        clearFields={() => {}}
         setFieldValidity={() => {}}
       />,
     );
@@ -34,7 +34,7 @@ describe('SignUp', () => {
           },
         }}
         addField={() => {}}
-        removeField={() => {}}
+        clearFields={() => {}}
         setFieldValidity={() => {}}
       />,
     );
