@@ -10,6 +10,7 @@ const TextInput = ({
   isRequired,
   handleChange,
   minLength,
+  maxLength,
   pattern,
 }) => (
   <TextInputStyled
@@ -19,7 +20,8 @@ const TextInput = ({
     aria-invalid={(!isValid).toString()}
     required={isRequired}
     onChange={handleChange}
-    {...(!!minLength && {minLength: minLength})}
+    {...(!!minLength && {minLength})}
+    {...(!!maxLength && {maxLength})}
     {...(!!pattern && {pattern})}
   />
 );
@@ -32,6 +34,7 @@ TextInput.propTypes = {
   isRequired: PropTypes.bool,
   handleChange: PropTypes.func.isRequired,
   minLength: PropTypes.number,
+  maxLength: PropTypes.number,
   pattern: PropTypes.string,
 };
 TextInput.defaultProps = {
@@ -40,6 +43,7 @@ TextInput.defaultProps = {
   isValid: true,
   isRequired: false,
   minLength: 0,
+  maxLength: 0,
   pattern: '',
 };
 
