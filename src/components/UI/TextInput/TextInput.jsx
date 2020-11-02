@@ -7,6 +7,7 @@ const TextInput = ({
   type,
   initialValue,
   isValid,
+  isRequired,
   handleChange,
   minLength,
   pattern,
@@ -16,6 +17,7 @@ const TextInput = ({
     type={type}
     value={initialValue}
     aria-invalid={(!isValid).toString()}
+    required={isRequired}
     onChange={handleChange}
     {...(!!minLength && {minLength: minLength})}
     {...(!!pattern && {pattern})}
@@ -27,6 +29,7 @@ TextInput.propTypes = {
   type: PropTypes.oneOf(['text', 'number', 'email', 'password']),
   initialValue: PropTypes.string,
   isValid: PropTypes.bool,
+  isRequired: PropTypes.bool,
   handleChange: PropTypes.func.isRequired,
   minLength: PropTypes.number,
   pattern: PropTypes.string,
@@ -35,6 +38,7 @@ TextInput.defaultProps = {
   type: 'text',
   initialValue: '',
   isValid: true,
+  isRequired: false,
   minLength: 0,
   pattern: '',
 };
