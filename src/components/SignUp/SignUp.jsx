@@ -1,4 +1,10 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
+import {addField} from '../../redux/signUp/reducer/signUp.reducer';
+import {signUpSelector} from '../../redux/signUp/selectors';
+import {SignUpAddressGroupStyled} from './SignUp.styles';
 import Form from '../UI/Form';
 import FormField from '../UI/FormField';
 import FormLabel from '../UI/FormLabel';
@@ -6,36 +12,44 @@ import TextInput from '../UI/TextInput';
 import Button from '../UI/Button';
 import CheckBox from '../UI/CheckBox';
 import TextArea from '../UI/TextArea';
-import {SignUpAddressGroupStyled} from './SignUp.styles';
 
-const formFields = {
-  firstname: {},
-  lastname: {},
-  nickname: {},
-  email: {},
-  password: {},
-  repeatPassword: {},
-  street: {},
-  apartment: {},
-  zip: {},
-  city: {},
-  additionalInformation: {},
-};
 const nameMinLength = 2;
 const addressMinLength = 4;
 const zipLength = 5;
+const zipPattern = '\\d{5}';
 const emailPattern = '\\S+@\\S+\\.\\S+';
 const passwordMinLength = 6;
-const passwordPattern = '\\d{2,}';
+const passwordPattern = '^(?=.*[a-z])(?=(?:.*[0-9]){2}).*';
 
-const SignUp = () => {
+const SignUp = ({fieldValues, addField, removeField}) => {
   const [isAddressHidden, setAddressVisibility] = useState(false);
+  const addFieldCallback = useCallback(
+    name => event => {
+      const {target} = event;
+
+      addField({
+        name,
+        value: target.value,
+        isValid: target?.validity?.valid,
+      });
+    },
+    [addField],
+  );
+  const getErrors = useCallback(
+    () =>
+      Object.keys(fieldValues).filter(
+        fieldKey => !fieldValues[fieldKey]?.isValid,
+      ),
+    [fieldValues],
+  );
+
+  console.log(getErrors());
 
   return (
     <Form
       handleSubmit={event => {
         event.preventDefault();
-        console.log('form submitted');
+        alert('Your data was sent to the server.');
       }}
     >
       <FormField
@@ -45,7 +59,9 @@ const SignUp = () => {
           id="firstname"
           minLength={nameMinLength}
           isRequired={true}
-          handleChange={event => console.log(event)}
+          initialValue={fieldValues.firstname?.value || ''}
+          isValid={!!fieldValues.firstname?.isValid}
+          handleChange={addFieldCallback('firstname')}
         />
       </FormField>
 
@@ -56,14 +72,21 @@ const SignUp = () => {
           id="lastname"
           minLength={nameMinLength}
           isRequired={true}
-          handleChange={event => console.log(event)}
+          initialValue={fieldValues.lastname?.value || ''}
+          isValid={!!fieldValues.lastname?.isValid}
+          handleChange={addFieldCallback('lastname')}
         />
       </FormField>
 
       <FormField
         labelComponent={<FormLabel describes="nickname">Nickname</FormLabel>}
       >
-        <TextInput id="nickname" handleChange={event => console.log(event)} />
+        <TextInput
+          id="nickname"
+          initialValue={fieldValues.nickname?.value || ''}
+          isValid={!!fieldValues.nickname?.isValid}
+          handleChange={addFieldCallback('nickname')}
+        />
       </FormField>
 
       <FormField
@@ -74,7 +97,9 @@ const SignUp = () => {
           type="email"
           isRequired={true}
           pattern={emailPattern}
-          handleChange={event => console.log(event)}
+          initialValue={fieldValues.email?.value || ''}
+          isValid={!!fieldValues.email?.isValid}
+          handleChange={addFieldCallback('email')}
         />
       </FormField>
 
@@ -87,7 +112,9 @@ const SignUp = () => {
           minLength={passwordMinLength}
           pattern={passwordPattern}
           isRequired={true}
-          handleChange={event => console.log(event)}
+          initialValue={fieldValues.password?.value || ''}
+          isValid={!!fieldValues.password?.isValid}
+          handleChange={addFieldCallback('password')}
         />
       </FormField>
 
@@ -96,13 +123,16 @@ const SignUp = () => {
           <FormLabel describes="repeatPassword">Repeat password</FormLabel>
         }
       >
+        {/* TODO: Validate to match password */}
         <TextInput
           id="repeatPassword"
           type="password"
           minLength={passwordMinLength}
           pattern={passwordPattern}
           isRequired={true}
-          handleChange={event => console.log(event)}
+          initialValue={fieldValues.repeatPassword?.value || ''}
+          isValid={!!fieldValues.repeatPassword?.isValid}
+          handleChange={addFieldCallback('repeatPassword')}
         />
       </FormField>
 
@@ -123,7 +153,9 @@ const SignUp = () => {
             id="street"
             minLength={addressMinLength}
             isRequired={true}
-            handleChange={event => console.log(event)}
+            initialValue={fieldValues.street?.value || ''}
+            isValid={!!fieldValues.street?.isValid}
+            handleChange={addFieldCallback('street')}
           />
         </FormField>
 
@@ -135,7 +167,9 @@ const SignUp = () => {
           <TextInput
             id="apartment"
             isRequired={true}
-            handleChange={event => console.log(event)}
+            initialValue={fieldValues.apartment?.value || ''}
+            isValid={!!fieldValues.apartment?.isValid}
+            handleChange={addFieldCallback('apartment')}
           />
         </FormField>
 
@@ -144,9 +178,12 @@ const SignUp = () => {
             id="zip"
             minLength={zipLength}
             maxLength={zipLength}
+            pattern={zipPattern}
             isRequired={true}
-            type="number"
-            handleChange={event => console.log(event)}
+            type="text"
+            initialValue={fieldValues.zip?.value || ''}
+            isValid={!!fieldValues.zip?.isValid}
+            handleChange={addFieldCallback('zip')}
           />
         </FormField>
 
@@ -157,7 +194,9 @@ const SignUp = () => {
             id="city"
             isRequired={true}
             minLength={addressMinLength}
-            handleChange={event => console.log(event)}
+            initialValue={fieldValues.city?.value || ''}
+            isValid={!!fieldValues.city?.isValid}
+            handleChange={addFieldCallback('city')}
           />
         </FormField>
       </SignUpAddressGroupStyled>
@@ -171,16 +210,40 @@ const SignUp = () => {
       >
         <TextArea
           id="additionalInformation"
-          handleChange={event => console.log(event)}
+          initialValue={fieldValues.additionalInformation?.value || ''}
+          isValid={!!fieldValues.additionalInformation?.isValid}
+          handleChange={addFieldCallback('additionalInformation')}
         />
       </FormField>
 
-      <Button type="submit">Sign up now!</Button>
+      <Button type="submit" isDisabled={getErrors().length > 0}>
+        Sign up now!
+      </Button>
     </Form>
   );
 };
 
-SignUp.propTypes = {};
-SignUp.defaultProps = {};
+SignUp.propTypes = {
+  fieldValues: PropTypes.objectOf(
+    PropTypes.exact({
+      value: PropTypes.string,
+      isValid: PropTypes.bool,
+    }),
+  ),
+  addField: PropTypes.func.isRequired,
+  removeField: PropTypes.func.isRequired,
+};
+SignUp.defaultProps = {
+  fieldValues: {},
+};
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+  addField: field => dispatch(addField(field)),
+  removeField: fieldName => dispatch(addField(fieldName)),
+});
+
+const mapStateToProps = createStructuredSelector({
+  fieldValues: signUpSelector,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
