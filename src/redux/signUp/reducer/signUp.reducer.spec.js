@@ -21,11 +21,14 @@ describe('signUpReducer', () => {
       }),
     );
 
-    expect(state).toEqual({firstname: 'John'});
+    expect(state).toEqual({firstname: {value: 'John', isValid: true}});
   });
 
   it('returns empty state', () => {
-    const state = signUpReducer({firstname: 'John'}, removeField('firstname'));
+    const state = signUpReducer(
+      {firstname: {value: 'John', isValid: true}},
+      removeField('firstname'),
+    );
 
     expect(state).toEqual({});
   });

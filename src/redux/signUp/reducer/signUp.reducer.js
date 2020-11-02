@@ -16,9 +16,14 @@ export const INITIAL_STATE = {};
 const signUpReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_FIELD:
+      const {name, value, isValid = true} = action.payload;
+
       return {
         ...state,
-        [action.payload.name]: action.payload.value,
+        [name]: {
+          value,
+          isValid,
+        },
       };
 
     case REMOVE_FIELD:
