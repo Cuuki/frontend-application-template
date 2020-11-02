@@ -1,13 +1,5 @@
 import React, {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
-import {
-  addField,
-  removeField,
-  setFieldValidity,
-} from '../../redux/signUp/reducer/signUp.reducer';
-import {signUpSelector} from '../../redux/signUp/selectors';
 import {SignUpAddressGroupStyled} from './SignUp.styles';
 import Form from '../UI/Form';
 import FormField from '../UI/FormField';
@@ -17,13 +9,13 @@ import Button from '../UI/Button';
 import CheckBox from '../UI/CheckBox';
 import TextArea from '../UI/TextArea';
 
-const nameMinLength = 2;
-const addressMinLength = 4;
-const zipLength = 5;
-const zipPattern = '\\d{5}';
-const emailPattern = '\\S+@\\S+\\.\\S+';
-const passwordMinLength = 6;
-const passwordPattern = '^(?=.*[a-z])(?=(?:.*[0-9]){2}).*';
+const NAME_MIN_LENGTH = 2;
+const ADDRESS_MIN_LENGTH = 4;
+const ZIP_LENGTH = 5;
+const ZIP_PATTERN = '\\d{5}';
+const EMAIL_PATTERN = '\\S+@\\S+\\.\\S+';
+const PASSWORD_MIN_LENGTH = 6;
+const PASSWORD_PATTERN = '^(?=.*[a-z])(?=(?:.*[0-9]){2}).*';
 
 const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
   const [isAddressHidden, setAddressVisibility] = useState(false);
@@ -59,7 +51,7 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
       >
         <TextInput
           id="firstname"
-          minLength={nameMinLength}
+          minLength={NAME_MIN_LENGTH}
           isRequired={true}
           initialValue={fieldValues.firstname?.value || ''}
           isValid={!!fieldValues.firstname?.isValid}
@@ -72,7 +64,7 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
       >
         <TextInput
           id="lastname"
-          minLength={nameMinLength}
+          minLength={NAME_MIN_LENGTH}
           isRequired={true}
           initialValue={fieldValues.lastname?.value || ''}
           isValid={!!fieldValues.lastname?.isValid}
@@ -98,7 +90,7 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
           id="email"
           type="email"
           isRequired={true}
-          pattern={emailPattern}
+          pattern={EMAIL_PATTERN}
           initialValue={fieldValues.email?.value || ''}
           isValid={!!fieldValues.email?.isValid}
           handleChange={addFieldCallback('email')}
@@ -111,8 +103,8 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
         <TextInput
           id="password"
           type="password"
-          minLength={passwordMinLength}
-          pattern={passwordPattern}
+          minLength={PASSWORD_MIN_LENGTH}
+          pattern={PASSWORD_PATTERN}
           isRequired={true}
           initialValue={fieldValues.password?.value || ''}
           isValid={!!fieldValues.password?.isValid}
@@ -137,8 +129,8 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
         <TextInput
           id="repeatPassword"
           type="password"
-          minLength={passwordMinLength}
-          pattern={passwordPattern}
+          minLength={PASSWORD_MIN_LENGTH}
+          pattern={PASSWORD_PATTERN}
           isRequired={true}
           initialValue={fieldValues.repeatPassword?.value || ''}
           isValid={!!fieldValues.repeatPassword?.isValid}
@@ -167,7 +159,7 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
         >
           <TextInput
             id="street"
-            minLength={addressMinLength}
+            minLength={ADDRESS_MIN_LENGTH}
             isRequired={true}
             initialValue={fieldValues.street?.value || ''}
             isValid={!!fieldValues.street?.isValid}
@@ -192,9 +184,9 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
         <FormField labelComponent={<FormLabel describes="zip">ZIP</FormLabel>}>
           <TextInput
             id="zip"
-            minLength={zipLength}
-            maxLength={zipLength}
-            pattern={zipPattern}
+            minLength={ZIP_LENGTH}
+            maxLength={ZIP_LENGTH}
+            pattern={ZIP_PATTERN}
             isRequired={true}
             type="text"
             initialValue={fieldValues.zip?.value || ''}
@@ -209,7 +201,7 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
           <TextInput
             id="city"
             isRequired={true}
-            minLength={addressMinLength}
+            minLength={ADDRESS_MIN_LENGTH}
             initialValue={fieldValues.city?.value || ''}
             isValid={!!fieldValues.city?.isValid}
             handleChange={addFieldCallback('city')}
@@ -250,18 +242,9 @@ SignUp.propTypes = {
   removeField: PropTypes.func.isRequired,
   setFieldValidity: PropTypes.func.isRequired,
 };
+
 SignUp.defaultProps = {
   fieldValues: {},
 };
 
-const mapDispatchToProps = dispatch => ({
-  addField: field => dispatch(addField(field)),
-  removeField: fieldName => dispatch(removeField(fieldName)),
-  setFieldValidity: field => dispatch(setFieldValidity(field)),
-});
-
-const mapStateToProps = createStructuredSelector({
-  fieldValues: signUpSelector,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default SignUp;
