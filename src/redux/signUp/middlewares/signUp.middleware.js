@@ -1,5 +1,5 @@
-const signUpMiddleware = () => (next) => (action) => {
+const signUpMiddleware = () => next => action => {
   return next(action);
 };
 
-export { signUpMiddleware };
+export {signUpMiddleware};

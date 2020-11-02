@@ -1,1 +1,1 @@
-export { signUpSelector } from "./signUp.selector";
+export {signUpSelector} from './signUp.selector';

@@ -1,6 +1,6 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import { signUpReducer } from "./signUp/reducer";
-import { signUpMiddleware } from "./signUp/middlewares";
+import {applyMiddleware, combineReducers, createStore} from 'redux';
+import {signUpReducer} from './signUp/reducer';
+import {signUpMiddleware} from './signUp/middlewares';
 
 const middlewares = [signUpMiddleware];
 
@@ -9,4 +9,4 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
-export { store };
+export {store};
