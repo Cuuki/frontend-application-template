@@ -2,7 +2,11 @@ import React, {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
-import {addField} from '../../redux/signUp/reducer/signUp.reducer';
+import {
+  addField,
+  removeField,
+  setFieldValidity,
+} from '../../redux/signUp/reducer/signUp.reducer';
 import {signUpSelector} from '../../redux/signUp/selectors';
 import {SignUpAddressGroupStyled} from './SignUp.styles';
 import Form from '../UI/Form';
@@ -21,16 +25,16 @@ const emailPattern = '\\S+@\\S+\\.\\S+';
 const passwordMinLength = 6;
 const passwordPattern = '^(?=.*[a-z])(?=(?:.*[0-9]){2}).*';
 
-const SignUp = ({fieldValues, addField, removeField}) => {
+const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
   const [isAddressHidden, setAddressVisibility] = useState(false);
   const addFieldCallback = useCallback(
-    name => event => {
+    (name, customValidity = true) => event => {
       const {target} = event;
 
       addField({
         name,
         value: target.value,
-        isValid: target?.validity?.valid,
+        isValid: target?.validity?.valid && customValidity,
       });
     },
     [addField],
@@ -42,8 +46,6 @@ const SignUp = ({fieldValues, addField, removeField}) => {
       ),
     [fieldValues],
   );
-
-  console.log(getErrors());
 
   return (
     <Form
@@ -114,7 +116,16 @@ const SignUp = ({fieldValues, addField, removeField}) => {
           isRequired={true}
           initialValue={fieldValues.password?.value || ''}
           isValid={!!fieldValues.password?.isValid}
-          handleChange={addFieldCallback('password')}
+          handleChange={event => {
+            const hasPasswordMatch =
+              event.target.value === fieldValues.repeatPassword?.value;
+
+            setFieldValidity({
+              name: 'repeatPassword',
+              isValid: hasPasswordMatch,
+            });
+            addFieldCallback('password', hasPasswordMatch)(event);
+          }}
         />
       </FormField>
 
@@ -123,7 +134,6 @@ const SignUp = ({fieldValues, addField, removeField}) => {
           <FormLabel describes="repeatPassword">Repeat password</FormLabel>
         }
       >
-        {/* TODO: Validate to match password */}
         <TextInput
           id="repeatPassword"
           type="password"
@@ -132,7 +142,13 @@ const SignUp = ({fieldValues, addField, removeField}) => {
           isRequired={true}
           initialValue={fieldValues.repeatPassword?.value || ''}
           isValid={!!fieldValues.repeatPassword?.isValid}
-          handleChange={addFieldCallback('repeatPassword')}
+          handleChange={event => {
+            const hasPasswordMatch =
+              event.target.value === fieldValues.password?.value;
+
+            setFieldValidity({name: 'password', isValid: hasPasswordMatch});
+            addFieldCallback('repeatPassword', hasPasswordMatch)(event);
+          }}
         />
       </FormField>
 
@@ -232,6 +248,7 @@ SignUp.propTypes = {
   ),
   addField: PropTypes.func.isRequired,
   removeField: PropTypes.func.isRequired,
+  setFieldValidity: PropTypes.func.isRequired,
 };
 SignUp.defaultProps = {
   fieldValues: {},
@@ -239,7 +256,8 @@ SignUp.defaultProps = {
 
 const mapDispatchToProps = dispatch => ({
   addField: field => dispatch(addField(field)),
-  removeField: fieldName => dispatch(addField(fieldName)),
+  removeField: fieldName => dispatch(removeField(fieldName)),
+  setFieldValidity: field => dispatch(setFieldValidity(field)),
 });
 
 const mapStateToProps = createStructuredSelector({

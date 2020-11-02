@@ -1,5 +1,6 @@
 export const ADD_FIELD = 'ADD_FIELD';
 export const REMOVE_FIELD = 'REMOVE_FIELD';
+export const SET_FIELD_VALIDITY = 'SET_FIELD_VALIDITY';
 
 export const addField = field => ({
   type: ADD_FIELD,
@@ -11,18 +12,21 @@ export const removeField = fieldName => ({
   payload: fieldName,
 });
 
+export const setFieldValidity = field => ({
+  type: SET_FIELD_VALIDITY,
+  payload: field,
+});
+
 export const INITIAL_STATE = {};
 
 const signUpReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_FIELD:
-      const {name, value, isValid = true} = action.payload;
-
       return {
         ...state,
-        [name]: {
-          value,
-          isValid,
+        [action.payload.name]: {
+          value: action.payload.value,
+          isValid: action.payload.isValid,
         },
       };
 
@@ -34,6 +38,15 @@ const signUpReducer = (state = INITIAL_STATE, action) => {
 
         return object;
       }, {});
+
+    case SET_FIELD_VALIDITY:
+      return {
+        ...state,
+        [action.payload.name]: {
+          value: state[action.payload.name]?.value,
+          isValid: action.payload.isValid,
+        },
+      };
 
     default:
       return state;
