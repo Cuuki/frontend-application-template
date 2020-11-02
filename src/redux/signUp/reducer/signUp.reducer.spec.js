@@ -1,5 +1,7 @@
 import {
   addField,
+  addFields,
+  clearFields,
   INITIAL_STATE,
   removeField,
   setFieldValidity,
@@ -23,6 +25,36 @@ describe('signUpReducer', () => {
     );
 
     expect(state).toEqual({firstname: {value: 'John', isValid: true}});
+  });
+
+  it('returns state with multiple fields', () => {
+    const state = signUpReducer(
+      INITIAL_STATE,
+      addFields({
+        firstname: {
+          value: 'John',
+          isValid: true,
+        },
+        lastname: {
+          value: '',
+          isValid: false,
+        },
+      }),
+    );
+
+    expect(state).toEqual({
+      firstname: {value: 'John', isValid: true},
+      lastname: {value: '', isValid: false},
+    });
+  });
+
+  it('removes all fields from state and returns empty state object', () => {
+    const state = signUpReducer(
+      {firstname: {value: 'John', isValid: true}},
+      clearFields(),
+    );
+
+    expect(state).toEqual({});
   });
 
   it('returns firstname field set from valid to invalid', () => {

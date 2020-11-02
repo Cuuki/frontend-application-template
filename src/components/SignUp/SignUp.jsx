@@ -17,7 +17,7 @@ const EMAIL_PATTERN = '\\S+@\\S+\\.\\S+';
 const PASSWORD_MIN_LENGTH = 6;
 const PASSWORD_PATTERN = '^(?=.*[a-z])(?=(?:.*[0-9]){2}).*';
 
-const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
+const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
   const [isAddressHidden, setAddressVisibility] = useState(false);
   const addFieldCallback = useCallback(
     (name, customValidity = true) => event => {
@@ -43,6 +43,7 @@ const SignUp = ({fieldValues, addField, removeField, setFieldValidity}) => {
     <Form
       handleSubmit={event => {
         event.preventDefault();
+        clearFields();
         alert('Your data was sent to the server.');
       }}
     >
@@ -239,7 +240,7 @@ SignUp.propTypes = {
     }),
   ),
   addField: PropTypes.func.isRequired,
-  removeField: PropTypes.func.isRequired,
+  clearFields: PropTypes.func.isRequired,
   setFieldValidity: PropTypes.func.isRequired,
 };
 
