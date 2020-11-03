@@ -39,6 +39,8 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
     [fieldValues],
   );
 
+  console.log(fieldValues.firstname);
+
   return (
     <Form
       handleSubmit={event => {
@@ -55,7 +57,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           minLength={NAME_MIN_LENGTH}
           isRequired={true}
           initialValue={fieldValues.firstname?.value || ''}
-          isValid={!!fieldValues.firstname?.isValid}
+          isValid={fieldValues.firstname?.isValid}
           handleChange={addFieldCallback('firstname')}
         />
       </FormField>
@@ -68,7 +70,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           minLength={NAME_MIN_LENGTH}
           isRequired={true}
           initialValue={fieldValues.lastname?.value || ''}
-          isValid={!!fieldValues.lastname?.isValid}
+          isValid={fieldValues.lastname?.isValid}
           handleChange={addFieldCallback('lastname')}
         />
       </FormField>
@@ -79,7 +81,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
         <TextInput
           id="nickname"
           initialValue={fieldValues.nickname?.value || ''}
-          isValid={!!fieldValues.nickname?.isValid}
+          isValid={fieldValues.nickname?.isValid}
           handleChange={addFieldCallback('nickname')}
         />
       </FormField>
@@ -93,7 +95,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           isRequired={true}
           pattern={EMAIL_PATTERN}
           initialValue={fieldValues.email?.value || ''}
-          isValid={!!fieldValues.email?.isValid}
+          isValid={fieldValues.email?.isValid}
           handleChange={addFieldCallback('email')}
         />
       </FormField>
@@ -108,14 +110,15 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           pattern={PASSWORD_PATTERN}
           isRequired={true}
           initialValue={fieldValues.password?.value || ''}
-          isValid={!!fieldValues.password?.isValid}
+          isValid={fieldValues.password?.isValid}
           handleChange={event => {
+            const {target} = event;
             const hasPasswordMatch =
-              event.target.value === fieldValues.repeatPassword?.value;
+              target.value === fieldValues.repeatPassword?.value;
 
             setFieldValidity({
               name: 'repeatPassword',
-              isValid: hasPasswordMatch,
+              isValid: hasPasswordMatch && target?.validity?.valid,
             });
             addFieldCallback('password', hasPasswordMatch)(event);
           }}
@@ -134,12 +137,16 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           pattern={PASSWORD_PATTERN}
           isRequired={true}
           initialValue={fieldValues.repeatPassword?.value || ''}
-          isValid={!!fieldValues.repeatPassword?.isValid}
+          isValid={fieldValues.repeatPassword?.isValid}
           handleChange={event => {
+            const {target} = event;
             const hasPasswordMatch =
-              event.target.value === fieldValues.password?.value;
+              target.value === fieldValues.password?.value;
 
-            setFieldValidity({name: 'password', isValid: hasPasswordMatch});
+            setFieldValidity({
+              name: 'password',
+              isValid: hasPasswordMatch && target?.validity?.valid,
+            });
             addFieldCallback('repeatPassword', hasPasswordMatch)(event);
           }}
         />
@@ -163,7 +170,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
             minLength={ADDRESS_MIN_LENGTH}
             isRequired={true}
             initialValue={fieldValues.street?.value || ''}
-            isValid={!!fieldValues.street?.isValid}
+            isValid={fieldValues.street?.isValid}
             handleChange={addFieldCallback('street')}
           />
         </FormField>
@@ -177,7 +184,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
             id="apartment"
             isRequired={true}
             initialValue={fieldValues.apartment?.value || ''}
-            isValid={!!fieldValues.apartment?.isValid}
+            isValid={fieldValues.apartment?.isValid}
             handleChange={addFieldCallback('apartment')}
           />
         </FormField>
@@ -191,7 +198,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
             isRequired={true}
             type="text"
             initialValue={fieldValues.zip?.value || ''}
-            isValid={!!fieldValues.zip?.isValid}
+            isValid={fieldValues.zip?.isValid}
             handleChange={addFieldCallback('zip')}
           />
         </FormField>
@@ -204,7 +211,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
             isRequired={true}
             minLength={ADDRESS_MIN_LENGTH}
             initialValue={fieldValues.city?.value || ''}
-            isValid={!!fieldValues.city?.isValid}
+            isValid={fieldValues.city?.isValid}
             handleChange={addFieldCallback('city')}
           />
         </FormField>
@@ -220,7 +227,7 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
         <TextArea
           id="additionalInformation"
           initialValue={fieldValues.additionalInformation?.value || ''}
-          isValid={!!fieldValues.additionalInformation?.isValid}
+          isValid={fieldValues.additionalInformation?.isValid}
           handleChange={addFieldCallback('additionalInformation')}
         />
       </FormField>

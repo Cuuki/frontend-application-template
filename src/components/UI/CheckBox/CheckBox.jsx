@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CheckboxContainerStyled, CheckboxStyled} from './Checkbox.styles';
+import {
+  CheckboxContainerStyled,
+  CheckboxLabelStyled,
+  CheckboxStyled,
+} from './Checkbox.styles';
 import FormLabel from '../FormLabel';
 
 const CheckBox = ({id, label, isChecked, handleChange}) => (
@@ -11,7 +15,9 @@ const CheckBox = ({id, label, isChecked, handleChange}) => (
       checked={isChecked}
       onChange={handleChange}
     />
-    <FormLabel describes={id}>{label}</FormLabel>
+    <FormLabel describes={id} as={CheckboxLabelStyled}>
+      {label}
+    </FormLabel>
   </CheckboxContainerStyled>
 );
 

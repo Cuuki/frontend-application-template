@@ -9,9 +9,7 @@ export const ButtonStyled = styled.button`
   border: none;
   border-radius: 0.5rem;
   width: ${({fullWidth}) => (fullWidth ? '100%' : 'auto')};
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: inherit;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.0125rem;

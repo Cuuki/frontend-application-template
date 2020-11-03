@@ -17,6 +17,7 @@ const TextInput = ({
     id={id}
     type={type}
     value={initialValue}
+    isValid={isValid}
     aria-invalid={(!isValid).toString()}
     required={isRequired}
     onChange={handleChange}

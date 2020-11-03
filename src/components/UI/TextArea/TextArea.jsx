@@ -6,6 +6,7 @@ const TextArea = ({id, initialValue, isValid, isRequired, handleChange}) => (
   <TextAreaStyled
     id={id}
     value={initialValue}
+    isValid={isValid}
     aria-invalid={(!isValid).toString()}
     required={isRequired}
     onChange={handleChange}
