@@ -1,4 +1,9 @@
-import {ADD_FIELD, addFields, CLEAR_FIELDS} from '../reducer/signUp.reducer';
+import {
+  ADD_FIELD,
+  addFields,
+  CLEAR_FIELDS,
+  SET_FIELD_VALIDITY,
+} from '../reducer/signUp.reducer';
 import {isJsonString} from '../../../utils';
 
 const SIGN_UP_STORAGE_KEY = 'signUp';
@@ -26,6 +31,18 @@ const signUpMiddleware = () => next => action => {
       saveFieldsToStorage({
         ...fields,
         [name]: {value, isValid},
+      });
+    }
+  }
+
+  if (action.type === SET_FIELD_VALIDITY) {
+    const {name, isValid} = action.payload;
+    const fields = getFieldsFromStorage();
+
+    if (fields?.[name]?.isValid !== isValid) {
+      saveFieldsToStorage({
+        ...fields,
+        [name]: {value: fields?.[name]?.value, isValid},
       });
     }
   }

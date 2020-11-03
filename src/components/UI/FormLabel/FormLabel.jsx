@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {FormLabelRequiredStyled, FormLabelStyled} from './FormLabel.styles';
 
 const FormLabel = ({describes, isRequired, as, children}) => {
-  const Component = as;
+  const Component = as || FormLabelStyled;
 
   return (
     <Component htmlFor={describes}>
@@ -16,7 +16,11 @@ const FormLabel = ({describes, isRequired, as, children}) => {
 FormLabel.propTypes = {
   describes: PropTypes.string.isRequired,
   isRequired: PropTypes.bool,
-  as: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+  as: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.node,
+    PropTypes.object,
+  ]),
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -24,7 +28,6 @@ FormLabel.propTypes = {
 };
 FormLabel.defaultProps = {
   isRequired: false,
-  as: FormLabelStyled,
 };
 
 export default FormLabel;

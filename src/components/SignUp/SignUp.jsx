@@ -39,8 +39,6 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
     [fieldValues],
   );
 
-  console.log(fieldValues.firstname);
-
   return (
     <Form
       handleSubmit={event => {
@@ -57,8 +55,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
         }
         isValid={fieldValues.firstname?.isValid}
         message={
-          fieldValues.firstname?.isValid === false &&
-          `Firstname should be at least ${NAME_MIN_LENGTH} characters long.`
+          fieldValues.firstname?.isValid === false
+            ? `Firstname should be at least ${NAME_MIN_LENGTH} characters long.`
+            : ''
         }
       >
         <TextInput
@@ -79,8 +78,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
         }
         isValid={fieldValues.lastname?.isValid}
         message={
-          fieldValues.lastname?.isValid === false &&
-          `Lastname should be at least ${NAME_MIN_LENGTH} characters long.`
+          fieldValues.lastname?.isValid === false
+            ? `Lastname should be at least ${NAME_MIN_LENGTH} characters long.`
+            : ''
         }
       >
         <TextInput
@@ -112,8 +112,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
         }
         isValid={fieldValues.email?.isValid}
         message={
-          fieldValues.email?.isValid === false &&
-          `Field needs to be a valid email address (i.E. test@example.com).`
+          fieldValues.email?.isValid === false
+            ? `Field needs to be a valid email address (i.E. test@example.com).`
+            : ''
         }
       >
         <TextInput
@@ -135,8 +136,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
         }
         isValid={fieldValues.password?.isValid}
         message={
-          fieldValues.password?.isValid === false &&
-          `Password should be at least ${PASSWORD_MIN_LENGTH} characters long, have at least two digits and match the "Repeat Password" field.`
+          fieldValues.password?.isValid === false
+            ? `Password should be at least ${PASSWORD_MIN_LENGTH} characters long, have at least two digits and match the "Repeat Password" field.`
+            : ''
         }
       >
         <TextInput
@@ -169,8 +171,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
         }
         isValid={fieldValues.repeatPassword?.isValid}
         message={
-          fieldValues.repeatPassword?.isValid === false &&
-          `Should be at least ${PASSWORD_MIN_LENGTH} characters long, have at least two digits and match the "Password" field.`
+          fieldValues.repeatPassword?.isValid === false
+            ? `Should be at least ${PASSWORD_MIN_LENGTH} characters long, have at least two digits and match the "Password" field.`
+            : ''
         }
       >
         <TextInput
@@ -213,8 +216,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           }
           isValid={fieldValues.street?.isValid}
           message={
-            fieldValues.street?.isValid === false &&
-            `Street should be at least ${ADDRESS_MIN_LENGTH} characters long.`
+            fieldValues.street?.isValid === false
+              ? `Street should be at least ${ADDRESS_MIN_LENGTH} characters long.`
+              : ''
           }
         >
           <TextInput
@@ -235,8 +239,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           }
           isValid={fieldValues.apartment?.isValid}
           message={
-            fieldValues.apartment?.isValid === false &&
-            `Apartment is required. Please fill in this field with your apartment number.`
+            fieldValues.apartment?.isValid === false
+              ? `Apartment is required. Please fill in this field with your apartment number.`
+              : ''
           }
         >
           <TextInput
@@ -256,8 +261,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           }
           isValid={fieldValues.zip?.isValid}
           message={
-            fieldValues.zip?.isValid === false &&
-            `ZIP code has to be ${ZIP_LENGTH} digits long.`
+            fieldValues.zip?.isValid === false
+              ? `ZIP code has to be ${ZIP_LENGTH} digits long.`
+              : ''
           }
         >
           <TextInput
@@ -281,8 +287,9 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           }
           isValid={fieldValues.city?.isValid}
           message={
-            fieldValues.city?.isValid === false &&
-            `City should be at least ${ADDRESS_MIN_LENGTH} characters long.`
+            fieldValues.city?.isValid === false
+              ? `City should be at least ${ADDRESS_MIN_LENGTH} characters long.`
+              : ''
           }
         >
           <TextInput
