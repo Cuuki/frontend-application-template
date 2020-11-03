@@ -50,7 +50,16 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
       }}
     >
       <FormField
-        labelComponent={<FormLabel describes="firstname">Firstname</FormLabel>}
+        labelComponent={
+          <FormLabel isRequired={true} describes="firstname">
+            Firstname
+          </FormLabel>
+        }
+        isValid={fieldValues.firstname?.isValid}
+        message={
+          fieldValues.firstname?.isValid === false &&
+          `Firstname should be at least ${NAME_MIN_LENGTH} characters long.`
+        }
       >
         <TextInput
           id="firstname"
@@ -63,7 +72,16 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
       </FormField>
 
       <FormField
-        labelComponent={<FormLabel describes="lastname">Lastname</FormLabel>}
+        labelComponent={
+          <FormLabel isRequired={true} describes="lastname">
+            Lastname
+          </FormLabel>
+        }
+        isValid={fieldValues.lastname?.isValid}
+        message={
+          fieldValues.lastname?.isValid === false &&
+          `Lastname should be at least ${NAME_MIN_LENGTH} characters long.`
+        }
       >
         <TextInput
           id="lastname"
@@ -87,7 +105,16 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
       </FormField>
 
       <FormField
-        labelComponent={<FormLabel describes="email">Email</FormLabel>}
+        labelComponent={
+          <FormLabel isRequired={true} describes="email">
+            Email
+          </FormLabel>
+        }
+        isValid={fieldValues.email?.isValid}
+        message={
+          fieldValues.email?.isValid === false &&
+          `Field needs to be a valid email address (i.E. test@example.com).`
+        }
       >
         <TextInput
           id="email"
@@ -101,7 +128,16 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
       </FormField>
 
       <FormField
-        labelComponent={<FormLabel describes="password">Password</FormLabel>}
+        labelComponent={
+          <FormLabel isRequired={true} describes="password">
+            Password
+          </FormLabel>
+        }
+        isValid={fieldValues.password?.isValid}
+        message={
+          fieldValues.password?.isValid === false &&
+          `Password should be at least ${PASSWORD_MIN_LENGTH} characters long, have at least two digits and match the "Repeat Password" field.`
+        }
       >
         <TextInput
           id="password"
@@ -127,7 +163,14 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
 
       <FormField
         labelComponent={
-          <FormLabel describes="repeatPassword">Repeat password</FormLabel>
+          <FormLabel isRequired={true} describes="repeatPassword">
+            Repeat password
+          </FormLabel>
+        }
+        isValid={fieldValues.repeatPassword?.isValid}
+        message={
+          fieldValues.repeatPassword?.isValid === false &&
+          `Should be at least ${PASSWORD_MIN_LENGTH} characters long, have at least two digits and match the "Password" field.`
         }
       >
         <TextInput
@@ -163,7 +206,16 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
 
       <SignUpAddressGroupStyled hidden={isAddressHidden}>
         <FormField
-          labelComponent={<FormLabel describes="street">Street</FormLabel>}
+          labelComponent={
+            <FormLabel isRequired={true} describes="street">
+              Street
+            </FormLabel>
+          }
+          isValid={fieldValues.street?.isValid}
+          message={
+            fieldValues.street?.isValid === false &&
+            `Street should be at least ${ADDRESS_MIN_LENGTH} characters long.`
+          }
         >
           <TextInput
             id="street"
@@ -177,7 +229,14 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
 
         <FormField
           labelComponent={
-            <FormLabel describes="apartment">Apartment</FormLabel>
+            <FormLabel describes="apartment" isRequired={true}>
+              Apartment
+            </FormLabel>
+          }
+          isValid={fieldValues.apartment?.isValid}
+          message={
+            fieldValues.apartment?.isValid === false &&
+            `Apartment is required. Please fill in this field with your apartment number.`
           }
         >
           <TextInput
@@ -189,7 +248,18 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
           />
         </FormField>
 
-        <FormField labelComponent={<FormLabel describes="zip">ZIP</FormLabel>}>
+        <FormField
+          labelComponent={
+            <FormLabel describes="zip" isRequired={true}>
+              ZIP
+            </FormLabel>
+          }
+          isValid={fieldValues.zip?.isValid}
+          message={
+            fieldValues.zip?.isValid === false &&
+            `ZIP code has to be ${ZIP_LENGTH} digits long.`
+          }
+        >
           <TextInput
             id="zip"
             minLength={ZIP_LENGTH}
@@ -204,7 +274,16 @@ const SignUp = ({fieldValues, addField, clearFields, setFieldValidity}) => {
         </FormField>
 
         <FormField
-          labelComponent={<FormLabel describes="city">City</FormLabel>}
+          labelComponent={
+            <FormLabel describes="city" isRequired={true}>
+              City
+            </FormLabel>
+          }
+          isValid={fieldValues.city?.isValid}
+          message={
+            fieldValues.city?.isValid === false &&
+            `City should be at least ${ADDRESS_MIN_LENGTH} characters long.`
+          }
         >
           <TextInput
             id="city"

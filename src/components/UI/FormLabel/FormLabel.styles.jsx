@@ -8,3 +8,7 @@ export const FormLabelStyled = styled.label`
   color: #4b5057;
   cursor: pointer;
 `;
+export const FormLabelRequiredStyled = styled.span`
+  margin-left: 0.25rem;
+  color: red;
+`;

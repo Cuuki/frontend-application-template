@@ -7,5 +7,9 @@ export const FormFieldStyled = styled.div`
   margin-bottom: 1.25rem;
 `;
 export const FormFieldMessageStyled = styled.p`
-  color: ${({isValid}) => (isValid ? 'green' : 'red')};
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: ${({isValid}) => (isValid ? '#4b5057' : 'red')};
 `;
