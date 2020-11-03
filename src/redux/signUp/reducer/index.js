@@ -1,1 +1,1 @@
-export { signUpReducer } from "./signUp.reducer";
+export {signUpReducer} from './signUp.reducer';

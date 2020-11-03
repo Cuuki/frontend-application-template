@@ -1,7 +1,7 @@
-import { createSelector } from "reselect";
+import {createSelector} from 'reselect';
 
-const getSignUp = (state) => state.signUp;
+const getSignUp = state => state.signUp;
 
-const signUpSelector = createSelector([getSignUp], (signUp) => signUp);
+const signUpSelector = createSelector([getSignUp], signUp => signUp);
 
-export { signUpSelector };
+export {signUpSelector};

@@ -1,1 +1,1 @@
-export { signUpMiddleware } from "./signUp.middleware";
+export {signUpMiddleware} from './signUp.middleware';

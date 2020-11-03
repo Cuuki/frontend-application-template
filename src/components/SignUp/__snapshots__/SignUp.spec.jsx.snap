@@ -1,0 +1,575 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp renders with no values set 1`] = `
+<form
+  class="sc-gsTCUz"
+>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="firstname"
+    >
+      Firstname
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="firstname"
+      minlength="2"
+      required=""
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="lastname"
+    >
+      Lastname
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="lastname"
+      minlength="2"
+      required=""
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="nickname"
+    >
+      Nickname
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="nickname"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="email"
+    >
+      Email
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="email"
+      pattern="\\\\S+@\\\\S+\\\\.\\\\S+"
+      required=""
+      type="email"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="password"
+    >
+      Password
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="password"
+      minlength="6"
+      pattern="^(?=.*[a-z])(?=(?:.*[0-9]){2}).*"
+      required=""
+      type="password"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="repeatPassword"
+    >
+      Repeat password
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="repeatPassword"
+      minlength="6"
+      pattern="^(?=.*[a-z])(?=(?:.*[0-9]){2}).*"
+      required=""
+      type="password"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-fubCfw bYdjmB"
+  >
+    <input
+      checked=""
+      class="sc-pFZIQ gyCexB"
+      id="checkboxField"
+      type="checkbox"
+    />
+    <label
+      class="sc-jrAGrp fPAgko"
+      for="checkboxField"
+    >
+      Show address
+    </label>
+  </div>
+  <fieldset
+    class="sc-bdfBwQ fNeAAH"
+  >
+    <div
+      class="sc-dlfnbm fHfeNh"
+    >
+      <label
+        class="sc-eCssSg kITOLD"
+        for="street"
+      >
+        Street
+        <span
+          class="sc-jSgupP bSfGbg"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-invalid="false"
+        class="sc-gKsewC hWAKJS"
+        id="street"
+        minlength="4"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="sc-dlfnbm fHfeNh"
+    >
+      <label
+        class="sc-eCssSg kITOLD"
+        for="apartment"
+      >
+        Apartment
+        <span
+          class="sc-jSgupP bSfGbg"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-invalid="false"
+        class="sc-gKsewC hWAKJS"
+        id="apartment"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="sc-dlfnbm fHfeNh"
+    >
+      <label
+        class="sc-eCssSg kITOLD"
+        for="zip"
+      >
+        ZIP
+        <span
+          class="sc-jSgupP bSfGbg"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-invalid="false"
+        class="sc-gKsewC hWAKJS"
+        id="zip"
+        maxlength="5"
+        minlength="5"
+        pattern="\\\\d{5}"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="sc-dlfnbm fHfeNh"
+    >
+      <label
+        class="sc-eCssSg kITOLD"
+        for="city"
+      >
+        City
+        <span
+          class="sc-jSgupP bSfGbg"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-invalid="false"
+        class="sc-gKsewC hWAKJS"
+        id="city"
+        minlength="4"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+  </fieldset>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="additionalInformation"
+    >
+      Additional information
+    </label>
+    <textarea
+      aria-invalid="false"
+      class="sc-kEjbxe weUjc"
+      id="additionalInformation"
+    />
+  </div>
+  <button
+    class="sc-iBPRYJ fTxkip"
+    type="submit"
+  >
+    Sign up now!
+  </button>
+</form>
+`;
+
+exports[`SignUp renders with values for firstname lastname and email 1`] = `
+<form
+  class="sc-gsTCUz"
+>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="firstname"
+    >
+      Firstname
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="firstname"
+      minlength="2"
+      required=""
+      type="text"
+      value="John"
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="lastname"
+    >
+      Lastname
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="lastname"
+      minlength="2"
+      required=""
+      type="text"
+      value="Doe"
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="nickname"
+    >
+      Nickname
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="nickname"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="email"
+    >
+      Email
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="true"
+      class="sc-gKsewC eNobSm"
+      id="email"
+      pattern="\\\\S+@\\\\S+\\\\.\\\\S+"
+      required=""
+      type="email"
+      value="test@example"
+    />
+    <p
+      class="sc-hKgILt lbPQAW"
+    >
+      Field needs to be a valid email address (i.E. test@example.com).
+    </p>
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="password"
+    >
+      Password
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="password"
+      minlength="6"
+      pattern="^(?=.*[a-z])(?=(?:.*[0-9]){2}).*"
+      required=""
+      type="password"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="repeatPassword"
+    >
+      Repeat password
+      <span
+        class="sc-jSgupP bSfGbg"
+      >
+        *
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="sc-gKsewC hWAKJS"
+      id="repeatPassword"
+      minlength="6"
+      pattern="^(?=.*[a-z])(?=(?:.*[0-9]){2}).*"
+      required=""
+      type="password"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-fubCfw bYdjmB"
+  >
+    <input
+      checked=""
+      class="sc-pFZIQ gyCexB"
+      id="checkboxField"
+      type="checkbox"
+    />
+    <label
+      class="sc-jrAGrp fPAgko"
+      for="checkboxField"
+    >
+      Show address
+    </label>
+  </div>
+  <fieldset
+    class="sc-bdfBwQ fNeAAH"
+  >
+    <div
+      class="sc-dlfnbm fHfeNh"
+    >
+      <label
+        class="sc-eCssSg kITOLD"
+        for="street"
+      >
+        Street
+        <span
+          class="sc-jSgupP bSfGbg"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-invalid="false"
+        class="sc-gKsewC hWAKJS"
+        id="street"
+        minlength="4"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="sc-dlfnbm fHfeNh"
+    >
+      <label
+        class="sc-eCssSg kITOLD"
+        for="apartment"
+      >
+        Apartment
+        <span
+          class="sc-jSgupP bSfGbg"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-invalid="false"
+        class="sc-gKsewC hWAKJS"
+        id="apartment"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="sc-dlfnbm fHfeNh"
+    >
+      <label
+        class="sc-eCssSg kITOLD"
+        for="zip"
+      >
+        ZIP
+        <span
+          class="sc-jSgupP bSfGbg"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-invalid="false"
+        class="sc-gKsewC hWAKJS"
+        id="zip"
+        maxlength="5"
+        minlength="5"
+        pattern="\\\\d{5}"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="sc-dlfnbm fHfeNh"
+    >
+      <label
+        class="sc-eCssSg kITOLD"
+        for="city"
+      >
+        City
+        <span
+          class="sc-jSgupP bSfGbg"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-invalid="false"
+        class="sc-gKsewC hWAKJS"
+        id="city"
+        minlength="4"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+  </fieldset>
+  <div
+    class="sc-dlfnbm fHfeNh"
+  >
+    <label
+      class="sc-eCssSg kITOLD"
+      for="additionalInformation"
+    >
+      Additional information
+    </label>
+    <textarea
+      aria-invalid="false"
+      class="sc-kEjbxe weUjc"
+      id="additionalInformation"
+    />
+  </div>
+  <button
+    class="sc-iBPRYJ RHitR"
+    disabled=""
+    type="submit"
+  >
+    Sign up now!
+  </button>
+</form>
+`;
